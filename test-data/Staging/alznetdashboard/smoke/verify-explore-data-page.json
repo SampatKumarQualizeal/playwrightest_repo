@@ -1,0 +1,31 @@
+  {
+    "testCaseId": "TCD_FT_01_FR-1",
+    "testCaseName": "verify explore data page loads correctly",
+    "type": "Smoke Testing (Positive test case)",
+    "preconditions": [
+      "User is logged into the ALZ-NET Dashboard",
+      "User is on the Explore Data Page"
+    ],
+    "filterTabs": {
+      "demographics": "Demographics",
+      "clinicalInformation": "Clinical Information",
+      "caseId": "Case ID",
+      "siteId": "Site ID"
+    },
+    "searchInput": {
+      "caseId": "4709-1"
+    },
+    "filters": {
+      "sexAtBirth": "Male"
+    },
+    "ageRange": {
+      "label": "30 and above",
+      "min": 30,
+      "max": 79
+    },
+    "race": "Black, African American, or African",
+    "searchCriteria": {
+      "siteId": "6001-Neurostudies, Inc - ALZ-NET"
+    },
+    "ethnicity": "Hispanic"
+  }

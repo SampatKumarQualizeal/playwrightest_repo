@@ -1,0 +1,52 @@
+{
+  "siteFormName": "Site Feasibility & Registration Form",
+  "siteName": "Test Site 1",
+  "SavedStatus": "Draft",
+  "SubmittedStatus": "Submitted",
+  "siteID": "Not Applicable",
+  "initialStatus": "Draft",
+  "draftText": "Your draft site registration form will be automatically deleted if there is 8 weeks of inactivity.",
+  "successionText": "Thank you for your interest in ALZ-NET! We will review your submission and",
+  "submittedStatus": "Submitted",
+  "activeStatus": "Active",
+  "staffDetails": {
+    "firstName": "Test123",
+    "lastName": "User",
+    "email": "test123@gmail.com",
+    "radioOption": "No"
+  },
+  "month": "01",
+  "day": "01",
+  "year": "1990",
+  "primaryAddressStreet": "123 Main Stree",
+  "primaryAddressTelephone": "555-123-4567",
+  "caseRegistrationPart1": {
+    "staffMember": "Vyshu TCS - vyshnav.tcs@gmail",
+    "consentLARMonth": "01",
+    "consentLARDay": "01",
+    "consentLARYear": "2026",
+    "informedConsentProvidedBy": "Patient",
+    "languageConsent": "English",
+    "hasConsentProvided": "No",
+    "legallyAuthorizedRepresentative": "Yes",
+    "patientIsAtLeast18": "Yes",
+    "patientHasDiagnosis": "Yes",
+    "fdaApprovedAdTherapy": "Yes",
+    "treatingClinicianDecision": "Yes"
+  },
+  "caseRegistrationPart2": {
+    "sexAssignedAtBirth": "Male",
+    "genderIdentity": "Male",
+    "race": "White or European",
+    "countryOfResidence": "USA",
+    "primaryInsurance": "Uninsured",
+    "secondaryInsurance": "No"
+  },
+  "chnagecase": {
+    "changeReason": "Requesting For Change",
+    "selectReasonForChange": "New Information",
+    "FormType": "Case Registration - Patient Information"
+  },
+  "backNvaigationPopupText": "Are you sure you want to navigate from this form? Any changes made will be lost.",
+  "proceedBtn": "YES"
+}

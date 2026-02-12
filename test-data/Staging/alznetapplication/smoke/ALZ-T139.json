@@ -1,0 +1,27 @@
+{
+  "siteFormName": "Imaging Facility Feasibility & Registration Form",
+  "siteName": "Test Facility 2",
+  "SavedStatus": "Draft",
+  "SubmittedStatus": "Submitted",
+  "siteID": "Not Applicable",
+  "initialStatus": "Draft",
+  "draftText": "Your draft imaging facility registration form will be automatically deleted if there is 8 weeks of inactivity.",
+  "successionText": "Thank you for your interest in ALZ-NET! We will review your submission and",
+  "submittedStatus": "Submitted",
+  "contactEmail": "siteuseralznet@gmail.com",
+  "activeStatus": "Active",
+  "staffDetails": {
+    "firstName": "Test123",
+    "lastName": "User",
+    "email": "test123@gmail.com",
+    "radioOption": "No",
+    "userRole": "Imaging Facility Staff"
+  },
+  "emailValidation": {
+    "subjectPattern": "ALZ-NET.Imaging Facility Registration.*Form.*Submitted",
+    "expectedContent": [
+      "siteName",
+      "Thank you for submitting the ALZ-NET Imaging Facility Registration Form. You were automatically assigned the Facility Administrator role in the ALZ-NET Portal for your facility."
+    ]
+  }
+}

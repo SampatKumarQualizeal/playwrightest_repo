@@ -1,0 +1,14 @@
+[
+  {
+    "category": "Demographics",
+    "filterName": "Race",
+    "anyOption": "American Indian or Alaska Native",
+    "multipleOptions": [
+      "American Indian or Alaska Native",
+      "Asian or Asian American"
+    ],
+    "allOptions": [
+      "Select All"
+    ]
+  }
+]

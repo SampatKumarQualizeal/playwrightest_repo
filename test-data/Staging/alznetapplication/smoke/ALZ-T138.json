@@ -1,0 +1,19 @@
+{
+  "siteFormName": "Site Feasibility & Registration Form",
+  "siteName": "Test Site 1",
+  "SavedStatus": "Draft",
+  "SubmittedStatus": "Submitted",
+  "siteID": "Not Applicable",
+  "initialStatus": "Draft",
+  "draftText": "Your draft site registration form will be automatically deleted if there is 8 weeks of inactivity.",
+  "successionText": "Thank you for your interest in ALZ-NET! We will review your submission and",
+  "submittedStatus": "Submitted",
+  "activeStatus": "Active",
+  "staffDetails": {
+    "firstName": "Test123",
+    "lastName": "User",
+    "email": "siteuseralznet@gmail.com",
+    "radioOption": "No",
+    "primaryRole": "Research Coordinator"
+  }
+}

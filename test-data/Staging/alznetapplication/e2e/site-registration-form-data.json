@@ -1,0 +1,48 @@
+{
+  "siteFormName": "Site Feasibility & Registration Form",
+  "siteName": "TestAutomation456",
+  "siteAddress": "123 Main Street, Springfield, MA,USA",
+  "physicalAddressStreet": "123 Main Stree",
+  "physicalAddressZip": "20878",
+  "physicalAddressCity": "Springfield",
+  "physicalAddressState": "AL",
+  "physicalAddressTelephone": "555-123-4567",
+  "physicalAddressFax": "555-765-4321",
+  "siteType": "Hospital or medical center",
+  "hospitalType": "Public Hospital",
+  "contactEmail": "siteuseralznet@gmail.com",
+  "contactPhone": "555-123-4567",
+  "additionalFields": {
+    "principal-investigator": "Dr. John Doe",
+    "number-of-beds": "150",
+    "site-capacity": "High",
+    "has-ethics-approval": "Yes",
+    "start-date": "2024-07-01",
+    "end-date": "2025-06-30",
+    "region": "North-East",
+    "country": "USA",
+    "state": "Illinois"
+  },
+  "imagingFacilityName": "Test Imaging",
+  "patientPopulation": {
+    "AmericanIndian": 10,
+    "AsianAmerican": 15,
+    "AfricanAmerican": 20,
+    "Latin": 25,
+    "NorthAfrican": 5,
+    "Otherpacific": 2,
+    "European": 30,
+    "InclusionExclusionCriteria": 20
+  },
+  "SavedStatus": "Draft",
+  "SubmittedStatus": "Submitted",
+  "siteID": "Not Applicable",
+  "initialStatus": "Draft",
+  "loggedInUser": "Mahesh B",
+  "draftText": "Your draft site registration form will be automatically deleted if there is 8 weeks of inactivity.",
+  "registrationFormText": {
+    "thankYouText": "Thank you for your interest in becoming a participating site of the Alzheimer’s Network for Treatment and Diagnostics (ALZ-NET).",
+    "pleaseNoteText": "Please note: Do not complete the form more than once for the same site location. If any information has changed since the original submission of your site’s Registration Form or if you are unsure if your site has already been submitted, please contact alz-net@acr.org.",
+    "instructionsText": "Instructions: After reviewing the ALZ-NET protocol synopsis, please complete the feasibility and registration questionnaire below. The 10-minute questionnaire will collect comprehensive information about your site, the staff, and the population you provide care for. After submission of the questionnaire, the ALZ-NET Operations Team will review all responses in a timely manner. If your site is approved to participate, you will be provided with an electronic welcome packet that contains all essential documents and further instructions on next steps and the start-up process. If your site is rejected, the ALZ-NET Operations Team will return the form to your site and follow-up with additional information via email."
+  }
+}

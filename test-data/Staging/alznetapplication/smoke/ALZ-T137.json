@@ -1,0 +1,31 @@
+  {
+    "testCaseId": "TCD_FT_02_FR-2",
+    "description": "Validate the image site registration form elements and submit the form",
+    "ImageRegistrationFormTabText": "Registration Form",
+    "siteID": "Not Applicable",
+    "initialStatus": "Draft",
+    "draftText": "Your draft imaging facility registration form will be automatically deleted if there is 8 weeks of inactivity.",
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "contactEmail": "siteuseralznet@gmail.com",
+    "siteAddress": "123 Main Street, Springfield, MA,USA",
+    "physicalAddressStreet": "123 Main Stree",
+    "physicalAddressZip": "20878",
+    "physicalAddressCity": "Springfield",
+    "physicalAddressState": "AL",
+    "physicalAddressTelephone": "555-123-4567",
+    "physicalAddressFax": "555-765-4321",
+    "imagingFacilityType": "Hospital-based",
+    "MedicareProviderNumber": "1234567890",
+    "imagefacilityAccreditations": "Medicare-approved hospital-",
+    "modalityTypes": "MRI",
+    "imageFacilityEvaluationOption": "Yes, only through clinical",
+    "dicomImageOption": "Somewhat, it will require",
+    "SavedStatus": "Draft",
+    "SubmittedStatus": "Submitted",
+    "successionText": "Thank you for your interest in ALZ-NET! We will review your submission and",
+    "emailValidation": {
+      "subjectPattern": "ALZ-NET.Imaging Facility Registration.*Form.*Submitted",
+      "expectedContent": ["siteName", "Thank you for submitting the ALZ-NET Imaging Facility Registration Form. You were automatically assigned the Facility Administrator role in the ALZ-NET Portal for your facility."]
+    }
+  }

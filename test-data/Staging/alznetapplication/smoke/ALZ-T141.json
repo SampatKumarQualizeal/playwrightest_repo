@@ -1,0 +1,21 @@
+{
+  "siteName": "Test Site 1",
+  "username": "rajendraaprasad1304@gmail.com",
+  "password": "Hyderabad123!",
+  "filterColumn": "Status",
+  "filterValue": "Active",
+  "exportButtonSelector": "export",
+  "downloadTimeout": 10000,
+  "defaultExportFilename": "case-list-export.csv",
+  "requiredHeaders": {
+    "caseId": "tracking|case\\s*id|case\\s*(#|number)",
+    "firstName": "patient\\s*first\\s*name|first\\s*name",
+    "lastName": "patient\\s*last\\s*name|last\\s*name",
+    "registrationDate": "registration\\s*date",
+    "status": "case\\s*status|status",
+    "clinician": "clinician",
+    "timepoint": "current\\s*data\\s*timepoint|current\\s*timepoint|data\\s*timepoint",
+    "startDate": "start\\s*date|visit\\s*date",
+    "endDate": "end\\s*date|follow.?up"
+  }
+}

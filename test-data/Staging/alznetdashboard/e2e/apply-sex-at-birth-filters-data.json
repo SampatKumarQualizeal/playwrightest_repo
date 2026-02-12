@@ -1,0 +1,14 @@
+[
+  {
+    "category": "Demographics",
+    "filterName": "Sex at Birth",
+    "anyOption": "Male",
+    "multipleOptions": [
+      "Male",
+      "Female"
+    ],
+    "allOptions": [
+      "Select All"
+    ]
+  }
+]

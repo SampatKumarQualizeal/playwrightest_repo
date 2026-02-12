@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2020", "DOM"],
+    "outDir": "./dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils/*"],
+      "@fixtures/*": ["src/fixtures/*"],
+      "@config/*": ["src/config/*"],
+      "@data/*": ["test-data/*"]
+    }
+
+  },
+  "include": ["src/**/*", "tests/**/*", "tests/specs/alznetapplication/smoke/ImagingFacilityRegistrationformSaveDraftCompleteAndSubmit_ALZ-T137.spec.ts", "tests/specs/alznetapplication/smoke/SaveAndSubmitImagingFacilityStaffRegistration_ALZ-T139.spec.ts"],
+  "exclude": ["node_modules", "dist"]
+}

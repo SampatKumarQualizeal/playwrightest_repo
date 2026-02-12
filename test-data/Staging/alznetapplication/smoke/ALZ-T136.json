@@ -1,0 +1,11 @@
+{
+  "successionText": "Thank you for your interest in ALZ-NET! We will review your submission and",
+  "submittedStatus": "Submitted",
+  "emailValidation": {
+    "subjectPattern": "ALZ-NET.*Registration.*Form.*Submitted",
+    "expectedContent": [
+      "siteName",
+      "Thank you for submitting the ALZ-NET Site Registration Form. You were automatically assigned the Site Administrator role in the ALZ-NET Portal for your site."
+    ]
+  }
+}

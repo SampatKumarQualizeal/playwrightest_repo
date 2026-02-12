@@ -1,0 +1,31 @@
+import { test, expect } from '@utils/pageFixture.js';
+import testDataArray from '@data/Staging/alznetdashboard/e2e/search-using-single-valid-case-id-data.json' with { type: 'json' };
+import { ENV } from '@/config/env.js';
+// Test Case: TCD_FT_01_FR-1 - Search using a single valid Case ID
+// Objective: Verify that the system allows searching with a single Case ID and returns the correct results.
+test.describe('TCD_FT_01_FR-1: Search using a single valid Case ID', () => {
+  const validCaseId = testDataArray[0].searchInput.caseId; // This could be parameterized from testData if needed
+  const url = ENV.BASE_URL;
+  const username = ENV.DASHBOARD_USERNAME;
+  const password = ENV.DASHBOARD_PASSWORD;
+  test.beforeEach(async ({ page, loginPage, exploreDataPage }) => {
+    // Login using credentials from test data
+    await loginPage.goto(url);
+    await loginPage.login(username, password);
+    // Navigate to Explore Data Page
+    await exploreDataPage.goto();
+    await exploreDataPage.toBeVisible();
+  });
+
+  test('should display correct subjects when searching by a valid Case ID', async ({ exploreDataPage }) => {
+    // Enter the Case ID in the search field
+    await exploreDataPage.enterCaseId(validCaseId);
+    // Click the search button
+    await exploreDataPage.clickSearch();
+    // Wait for results to load
+    await exploreDataPage.waitForResults();
+    // Assert that the results contain the expected Case ID
+    const results = await exploreDataPage.hasCaseId(validCaseId);
+    expect(results).toBeTruthy();
+  });
+});

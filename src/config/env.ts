@@ -1,0 +1,15 @@
+export const ENV = {
+  BASE_URL: process.env.BASE_URL!,
+  TEST_ENV: process.env.TEST_ENV!,
+  DASHBOARD_USERNAME: process.env.DASHBOARD_USERNAME!,
+  DASHBOARD_PASSWORD: process.env.DASHBOARD_PASSWORD!,
+  BROWSER: process.env.BROWSER!,
+  OS: process.env.OS!,
+  APPUSERNAME: process.env.APPUSERNAME!,
+  APPPASSWORD: process.env.APPPASSWORD!,
+  ACTIVE_APPUSERNAME: process.env.ACTIVE_APPUSERNAME!,
+  ACTIVE_APPPASSWORD: process.env.ACTIVE_APPPASSWORD!,
+  TAU_APPUSERNAME: process.env.TAU_APPUSERNAME!,
+  TAU_APPPASSWORD: process.env.TAU_APPPASSWORD!,
+  APP_URL: process.env.APP_URL!
+};

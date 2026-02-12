@@ -1,0 +1,35 @@
+{
+  "name": "acr-qmentis-alznet",
+  "version": "1.0.0",
+  "description": "ACR Qmentis AlzNet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ACREnterprise/acr-qmentis-alznet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ACREnterprise/acr-qmentis-alznet/issues"
+  },
+  "homepage": "https://github.com/ACREnterprise/acr-qmentis-alznet#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^10.2.0",
+    "@playwright/test": "^1.57.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "xlsx": "^0.18.5"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "googleapis": "^171.0.0",
+    "playwright": "^1.57.0",
+    "pptxgenjs": "^4.0.1",
+    "prettier": "^3.7.4"
+  }
+}

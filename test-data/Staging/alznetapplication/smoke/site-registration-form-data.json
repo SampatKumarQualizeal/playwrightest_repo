@@ -1,0 +1,43 @@
+{
+  "siteFormName": "Site Feasibility & Registration Form",
+  "siteName": "TestAutomation456",
+  "siteAddress": "123 Main Street, Springfield, MA,USA",
+  "physicalAddressStreet": "123 Main Stree",
+  "physicalAddressZip": "20878",
+  "physicalAddressCity": "Springfield",
+  "physicalAddressState": "AL",
+  "physicalAddressTelephone": "555-123-4567",
+  "physicalAddressFax": "555-765-4321",
+  "siteType": "Hospital or medical center",
+  "hospitalType": "Public Hospital",
+  "contactEmail": "siteuseralznet@gmail.com",
+  "contactPhone": "555-123-4567",
+  "additionalFields": {
+    "principal-investigator": "Dr. John Doe",
+    "number-of-beds": "150",
+    "site-capacity": "High",
+    "has-ethics-approval": "Yes",
+    "start-date": "2024-07-01",
+    "end-date": "2025-06-30",
+    "region": "North-East",
+    "country": "USA",
+    "state": "Illinois"
+  },
+  "imagingFacilityName": "Test Imaging",
+  "patientPopulation": {
+      "AmericanIndian": 10,
+      "AsianAmerican": 15,
+      "AfricanAmerican": 20,
+      "Latin": 25,
+      "NorthAfrican": 5,
+      "Otherpacific": 2,
+      "European": 30,
+      "InclusionExclusionCriteria": 20
+    },
+    "SavedStatus": "Draft",
+    "SubmittedStatus": "Submitted",
+    "siteID": "Not Applicable",
+    "initialStatus": "Draft",
+    "draftText": "Your draft site registration form will be automatically deleted if there is 8 weeks of inactivity."
+  
+}
