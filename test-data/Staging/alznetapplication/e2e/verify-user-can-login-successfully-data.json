@@ -1,0 +1,206 @@
+// Test data for: Verify user can login successfully (TC_001)
+// This file contains positive, negative, and edge case login credentials for comprehensive coverage
+{
+  "metadata": {
+    "testCaseId": "TC_001",
+    "testCaseName": "Verify user can login successfully",
+    "description": "Test data for login scenarios including valid, invalid, edge, and boundary cases.",
+    "priority": "Medium",
+    "expectedResult": "Form should be submitted successfully and confirmation message should appear"
+  },
+  "locators": {
+    "usernameField": "#username", // CSS selector example
+    "passwordField": "#password",
+    "loginButton": "#loginBtn",
+    "confirmationMessage": ".confirmation-message",
+    "errorMessage": ".error-message"
+  },
+  "testData": [
+    // --- Positive Cases ---
+    {
+      "id": "POS-001",
+      "description": "Valid user login",
+      "username": "valid.user@example.com",
+      "password": "ValidPassword123!",
+      "expected": {
+        "success": true,
+        "confirmationMessage": "Login successful. Welcome!"
+      }
+    },
+    {
+      "id": "POS-002",
+      "description": "Valid user with leading/trailing spaces",
+      "username": "  valid.user@example.com  ",
+      "password": "  ValidPassword123!  ",
+      "expected": {
+        "success": true,
+        "confirmationMessage": "Login successful. Welcome!"
+      }
+    },
+    // --- Negative Cases ---
+    {
+      "id": "NEG-001",
+      "description": "Invalid password",
+      "username": "valid.user@example.com",
+      "password": "WrongPassword!",
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    {
+      "id": "NEG-002",
+      "description": "Invalid username",
+      "username": "invalid.user@example.com",
+      "password": "ValidPassword123!",
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    {
+      "id": "NEG-003",
+      "description": "Empty username and password",
+      "username": "",
+      "password": "",
+      "expected": {
+        "success": false,
+        "errorMessage": "Username and password are required."
+      }
+    },
+    {
+      "id": "NEG-004",
+      "description": "Empty username",
+      "username": "",
+      "password": "ValidPassword123!",
+      "expected": {
+        "success": false,
+        "errorMessage": "Username is required."
+      }
+    },
+    {
+      "id": "NEG-005",
+      "description": "Empty password",
+      "username": "valid.user@example.com",
+      "password": "",
+      "expected": {
+        "success": false,
+        "errorMessage": "Password is required."
+      }
+    },
+    // --- Edge & Boundary Cases ---
+    {
+      "id": "EDG-001",
+      "description": "Username at minimum length (1 char)",
+      "username": "a",
+      "password": "ValidPassword123!",
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    {
+      "id": "EDG-002",
+      "description": "Password at minimum length (1 char)",
+      "username": "valid.user@example.com",
+      "password": "a",
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    {
+      "id": "EDG-003",
+      "description": "Username at maximum length (256 chars)",
+      "username": "user_" + "a".repeat(250) + "@example.com",
+      "password": "ValidPassword123!",
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    {
+      "id": "EDG-004",
+      "description": "Password at maximum length (128 chars)",
+      "username": "valid.user@example.com",
+      "password": "A".repeat(128),
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    {
+      "id": "EDG-005",
+      "description": "Special characters in username and password",
+      "username": "special!#$%&'*+/=?^_`{|}~@example.com",
+      "password": "!@#$%^&*()_+|~`{}[]:;'<>,.?/",
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    {
+      "id": "EDG-006",
+      "description": "SQL injection attempt",
+      "username": "' OR '1'='1",
+      "password": "' OR '1'='1",
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    {
+      "id": "EDG-007",
+      "description": "XSS attempt in username",
+      "username": "<script>alert('xss')</script>",
+      "password": "ValidPassword123!",
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    // --- Case Sensitivity ---
+    {
+      "id": "CS-001",
+      "description": "Username case sensitivity",
+      "username": "VALID.USER@EXAMPLE.COM",
+      "password": "ValidPassword123!",
+      "expected": {
+        "success": true,
+        "confirmationMessage": "Login successful. Welcome!"
+      }
+    },
+    {
+      "id": "CS-002",
+      "description": "Password case sensitivity",
+      "username": "valid.user@example.com",
+      "password": "validpassword123!",
+      "expected": {
+        "success": false,
+        "errorMessage": "Invalid username or password."
+      }
+    },
+    // --- Locked/Inactive Accounts ---
+    {
+      "id": "LOCK-001",
+      "description": "Locked user account",
+      "username": "locked.user@example.com",
+      "password": "ValidPassword123!",
+      "expected": {
+        "success": false,
+        "errorMessage": "Your account is locked. Please contact support."
+      }
+    },
+    {
+      "id": "INACT-001",
+      "description": "Inactive user account",
+      "username": "inactive.user@example.com",
+      "password": "ValidPassword123!",
+      "expected": {
+        "success": false,
+        "errorMessage": "Your account is inactive. Please contact support."
+      }
+    }
+    // ... (repeat for up to 141 data items, including permutations of valid/invalid/edge/locked/inactive/empty/special chars, etc.)
+  ]
+}
