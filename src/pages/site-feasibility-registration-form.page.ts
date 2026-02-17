@@ -10,6 +10,8 @@ export class SiteFeasibilityRegistrationFormPage extends BasePage {
   private readonly formContainer: Locator; // Main form container
   private readonly accessLogIndicator: Locator; // Indicator/log message for access logging
   private readonly rmsRoleBadge: Locator; // Badge or indicator for RMS role
+  private readonly successMessage: Locator; // Confirmation message after successful submission
+  private readonly saveAndSubmitBtn: Locator; // Save & Submit button
 
   constructor(page: Page) {
     super(page);
@@ -19,6 +21,8 @@ export class SiteFeasibilityRegistrationFormPage extends BasePage {
     this.formContainer = page.locator('locator("<PLACEHOLDER_form_container>")'); // TODO: Replace with actual locator
     this.accessLogIndicator = page.locator('locator("<PLACEHOLDER_access_log_indicator>")'); // TODO: Replace with actual locator
     this.rmsRoleBadge = page.locator('locator("<PLACEHOLDER_rms_role_badge>")'); // TODO: Replace with actual locator
+    this.successMessage = page.locator('locator("<PLACEHOLDER_success_message>")'); // TODO: Replace with actual locator
+    this.saveAndSubmitBtn = page.locator('locator("<PLACEHOLDER_save_and_submit_button>")'); // TODO: Replace with actual locator
   }
 
   /**
@@ -89,5 +93,68 @@ export class SiteFeasibilityRegistrationFormPage extends BasePage {
       await ActionUtils.click(submitButton);
       await this.page.waitForLoadState('networkidle');
     });
+  }
+
+  /**
+   * Wrapper to fill all mandatory fields using a structured data object from test data.
+   * Accepts a strongly-typed object matching the test data structure.
+   * @param data Structured registration form data object
+   */
+  async fillRegistrationFormWithStructuredData(data: any): Promise<void> {
+    await test.step('Fill all mandatory fields in Site Feasibility & Registration Form', async () => {
+      // Example: Fill top-level fields
+      if (data.siteName) {
+        const siteNameLocator = this.page.locator('locator("<PLACEHOLDER_form_field_siteName>")');
+        await siteNameLocator.waitFor({ state: 'visible', timeout: 5000 });
+        await ActionUtils.fill(siteNameLocator, data.siteName);
+      }
+      if (data.siteAddress) {
+        const siteAddressLocator = this.page.locator('locator("<PLACEHOLDER_form_field_siteAddress>")');
+        await siteAddressLocator.waitFor({ state: 'visible', timeout: 5000 });
+        await ActionUtils.fill(siteAddressLocator, data.siteAddress);
+      }
+      // Example: Fill nested additionalFields if present
+      if (data.additionalFields) {
+        for (const [field, value] of Object.entries(data.additionalFields)) {
+          const fieldLocator = this.page.locator(`locator("<PLACEHOLDER_form_field_${field}>")`);
+          await fieldLocator.waitFor({ state: 'visible', timeout: 5000 });
+          await ActionUtils.fill(fieldLocator, value as string);
+        }
+      }
+      // Example: Fill patientPopulation if present
+      if (data.patientPopulation) {
+        for (const [field, value] of Object.entries(data.patientPopulation)) {
+          const fieldLocator = this.page.locator(`locator("<PLACEHOLDER_form_field_${field}>")`);
+          await fieldLocator.waitFor({ state: 'visible', timeout: 5000 });
+          await ActionUtils.fill(fieldLocator, String(value));
+        }
+      }
+      // Add more sections as needed based on the structure of your test data
+    });
+  }
+
+  /**
+   * Wrapper to click Save & Submit button and verify the confirmation message.
+   * Waits for the success message to appear after submission.
+   */
+  async saveAndSubmitForm(): Promise<void> {
+    await test.step('Save and Submit Site Feasibility & Registration Form', async () => {
+      await this.saveAndSubmitBtn.waitFor({ state: 'visible', timeout: 5000 });
+      await ActionUtils.click(this.saveAndSubmitBtn);
+      await this.page.waitForLoadState('networkidle');
+      await this.successMessage.waitFor({ state: 'visible', timeout: 15000 });
+      await expect(this.successMessage).toBeVisible();
+    });
+  }
+
+  /**
+   * Verifies that the success message is displayed after form submission.
+   * @returns {Promise<boolean>} True if the confirmation message is visible
+   */
+  async isSubmissionSuccessMessageDisplayed(): Promise<boolean> {
+    await test.step('Verify submission confirmation message is displayed', async () => {
+      await this.successMessage.waitFor({ state: 'visible', timeout: 15000 });
+    });
+    return await this.successMessage.isVisible();
   }
 }

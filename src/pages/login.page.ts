@@ -70,6 +70,18 @@ export class LoginPage extends BasePage {
     });
   }
 
+  /**
+   * Composite login helper for streamlined test steps.
+   * Accepts a credentials object with username and password fields.
+   * Example usage:
+   *   await loginPage.loginWithCredentials({ username: 'user', password: 'pass' });
+   */
+  async loginWithCredentials(credentials: { username: string; password: string }): Promise<void> {
+    await test.step('Login using credentials payload', async () => {
+      await this.login(credentials.username, credentials.password);
+    });
+  }
+
   async verifyLoginPageContent(): Promise<void> {
     await test.step('Verify Login Page Content', async () => {
       await expect(this.welcomeHeading).toBeVisible();

@@ -1,6 +1,7 @@
 import { expect, Locator, Page, test } from '@playwright/test';
 import { BasePage } from '@pages/base.page.js';
 import { RegistrationFormPage } from './registration-form.page.js';
+import { SiteFeasibilityRegistrationFormPage } from './site-feasibility-registration-form.page.js';
 //import test from 'node:test';
 export class HomePage extends BasePage {
   private readonly landingPageImage: Locator;
@@ -11,6 +12,7 @@ export class HomePage extends BasePage {
   private readonly accessMySiteLink: Locator;
   private readonly accessMyFacilityLink: Locator;
   private readonly registrationStepsText: Locator;
+  private readonly registerMySiteButton: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -22,7 +24,7 @@ export class HomePage extends BasePage {
     this.accessMySiteLink = page.getByRole('button', { name: 'ACCESS MY SITE' });
     this.accessMyFacilityLink = page.getByRole('button', { name: 'ACCESS MY FACILITY' });
     this.datadashboardLink = page.locator("//a[contains(@class,'dashboard-link')]");
-
+    this.registerMySiteButton = page.getByRole('button', { name: 'Register My Site' });
   }
   siteOrFacilityDropdownValue(siteName: string): Locator {
     return this.page.getByRole('button', { name: siteName });
@@ -90,6 +92,20 @@ export class HomePage extends BasePage {
       await this.siteOrFacilityDropdownValue(siteOrFacilityName).waitFor({ state: 'visible', timeout: 10000 });
     });
   }
+
+  /**
+   * Navigates to the Site Registration flow by clicking the 'Register My Site' button and returns the SiteFeasibilityRegistrationFormPage.
+   * This provides a stable entry point for tests needing to reach the Site Feasibility Registration form.
+   */
+  async navigateToSiteRegistrationForm(): Promise<SiteFeasibilityRegistrationFormPage> {
+    await test.step('Navigate to Site Registration Form', async () => {
+      await expect(this.registerMySiteButton).toBeVisible();
+      await this.registerMySiteButton.click();
+      await this.page.waitForLoadState('domcontentloaded');
+    });
+    return new SiteFeasibilityRegistrationFormPage(this.page);
+  }
+
   async verifyLogoutBtn(): Promise<void> {
     await test.step('Verify Logout from Application', async () => {
       const expandMore = this.page.locator("//*[contains(text(),'expand_more')]").nth(0);
