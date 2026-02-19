@@ -1,0 +1,28 @@
+{
+  "contactFormName": "CRM Contact Creation Form",
+  "name": "Test User Invalid Email",
+  "phone": "555-987-6543",
+  "company": "Qualizeal Solutions",
+  "position": "QA Engineer",
+  "email": "invalidemail.com",
+  "additionalFields": {
+    "scenario-id": "TC-N002",
+    "test-objective": "Verify system rejects invalid email formats and displays appropriate error message.",
+    "priority": "Medium",
+    "type": "Functional",
+    "preconditions": [
+      "User is logged into the CRM system.",
+      "User navigates to the contact creation screen."
+    ],
+    "test-steps": [
+      "Enter valid data in Name, Phone Number, Company, and Position fields.",
+      "Enter an invalid email format (e.g., 'invalidemail.com') in the Email field.",
+      "Click the 'Save' button."
+    ],
+    "expected-result": "System displays an error message indicating the email format is invalid.",
+    "post-conditions": "No contact is saved in the CRM system."
+  },
+  "uiText": {
+    "invalidEmailError": "Please enter a valid email address."
+  }
+}

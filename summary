@@ -1,0 +1,70 @@
+import { Page, Locator, expect, test } from "@playwright/test";
+import { BasePage } from "./base.page.js";
+
+export class ContactsPage extends BasePage {
+  constructor(public page: Page) {
+    super(page);
+  }
+
+  // Locators
+  private get nameInput(): Locator {
+    return this.page.locator('input[name="name"]');
+  }
+
+  private get emailInput(): Locator {
+    return this.page.locator('input[name="email"]');
+  }
+
+  private get phoneInput(): Locator {
+    return this.page.locator('input[name="phone"]');
+  }
+
+  private get companyInput(): Locator {
+    return this.page.locator('input[name="company"]');
+  }
+
+  private get positionInput(): Locator {
+    return this.page.locator('input[name="position"]');
+  }
+
+  private get saveButton(): Locator {
+    return this.page.locator('button', { hasText: 'Save' });
+  }
+
+  private get emailErrorMessage(): Locator {
+    return this.page.locator('text=/invalid email/i');
+  }
+
+  // Navigation
+  async gotoCreateContact(): Promise<void> {
+    await test.step('Navigate to Create Contact screen', async () => {
+      await this.page.click('a[href="/contacts"]');
+      await this.page.click('a[href="/contacts/new"]');
+      await expect(this.nameInput).toBeVisible({ timeout: 7000 });
+    });
+  }
+
+  // Actions
+  async fillContactForm({ name, email, phone, company, position }: { name: string; email: string; phone: string; company: string; position: string; }): Promise<void> {
+    await test.step('Fill contact form fields', async () => {
+      await this.nameInput.fill(name);
+      await this.emailInput.fill(email);
+      await this.phoneInput.fill(phone);
+      await this.companyInput.fill(company);
+      await this.positionInput.fill(position);
+    });
+  }
+
+  async saveContact(): Promise<void> {
+    await test.step('Click Save button', async () => {
+      await this.saveButton.click();
+    });
+  }
+
+  // Assertions
+  async expectInvalidEmailError(): Promise<void> {
+    await test.step('Assert invalid email error message is displayed', async () => {
+      await expect(this.emailErrorMessage).toBeVisible({ timeout: 5000 });
+    });
+  }
+}
