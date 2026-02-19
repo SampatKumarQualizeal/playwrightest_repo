@@ -1,0 +1,12 @@
+{
+  "username": "siteuseralznet@gmail.com",
+  "password": "QAZqaz852@",
+  "contact": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "invalidemail.com",
+    "phone": "555-123-4567",
+    "company": "Acme Corp",
+    "position": "Manager"
+  }
+}
