@@ -1,0 +1,24 @@
+{
+  "testCaseId": "TC-N001",
+  "testCaseName": "Create a new contact",
+  "loginCredentials": {
+    "userName": "testuser@example.com",
+    "password": "Test@1234"
+  },
+  "contactDetails": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "555-123-4567",
+    "company": "Acme Corp",
+    "email": "john.doe@example.com"
+  },
+  "expectedResult": "System displays appropriate message.",
+  "postConditions": "New contact is saved in the CRM system.",
+  "priority": "Medium",
+  "environment": "Staging",
+  "additionalFields": {
+    "contact-category": "Customer",
+    "region": "North America",
+    "start-date": "2024-07-01"
+  }
+}
