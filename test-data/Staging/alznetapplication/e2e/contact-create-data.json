@@ -1,0 +1,11 @@
+{
+  "loginUsername": "siteuseralznet@gmail.com",
+  "loginPassword": "QAZqaz852@",
+  "contact": {
+    "firstName": "Siva",
+    "lastName": "Arava",
+    "phone": "555-123-4567",
+    "company": "Acme Diagnostics",
+    "email": "siva.arava@acmediagnostics.com"
+  }
+}
