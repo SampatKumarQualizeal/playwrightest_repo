@@ -1,0 +1,51 @@
+{
+  "testCaseId": "TC_001",
+  "testCaseName": "Verify user can login successfully",
+  "user_id": "siteuseralznet@gmail.com",
+  "password": "QAZqaz852@",
+  "siteName": "Springfield Memory Center",
+  "siteAddress": "123 Main Street, Springfield, MA, USA",
+  "firstName": "Samantha",
+  "lastName": "Williams",
+  "contactEmail": "samantha.williams@springfieldmemory.org",
+  "telephone": "555-987-6543",
+  "registrationFormData": {
+    "siteFormName": "Site Feasibility & Registration Form",
+    "siteName": "Springfield Memory Center",
+    "siteID": "Not Applicable",
+    "siteAddress": "123 Main Street, Springfield, MA, USA",
+    "SavedStatus": "Draft",
+    "SubmittedStatus": "Submitted",
+    "initialStatus": "Draft",
+    "principalInvestigator": "Dr. Jonathan Blake",
+    "primaryContact": {
+      "firstName": "Samantha",
+      "lastName": "Williams",
+      "email": "samantha.williams@springfieldmemory.org",
+      "telephone": "555-987-6543"
+    },
+    "additionalFields": {
+      "principal-investigator": "Dr. Jonathan Blake",
+      "number-of-beds": "120",
+      "site-capacity": "Medium",
+      "has-ethics-approval": "Yes",
+      "start-date": "2024-07-01",
+      "end-date": "2025-06-30"
+    },
+    "patientPopulation": {
+      "AmericanIndian": 8,
+      "AsianAmerican": 14,
+      "AfricanAmerican": 22,
+      "Latin": 18,
+      "NorthAfrican": 3,
+      "Otherpacific": 2,
+      "European": 33,
+      "InclusionExclusionCriteria": 15
+    },
+    "registrationFormText": {
+      "thankYouText": "Thank you for your interest in becoming a participating site of the Alzheimer’s Network for Treatment and Diagnostics (ALZ-NET).",
+      "pleaseNoteText": "Please note: Do not complete the form more than once for the same site location. If you have already submitted a registration for this site, please contact alznet@acr.org for assistance.",
+      "instructionsText": "Instructions: After reviewing the ALZ-NET protocol synopsis, please complete the feasibility and registration questionnaire below. All fields marked with an asterisk (*) are required. Once submitted, you will receive a confirmation email and our team will review your submission."
+    }
+  }
+}

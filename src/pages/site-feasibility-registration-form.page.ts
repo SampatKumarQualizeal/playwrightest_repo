@@ -1,4 +1,3 @@
-// src/pages/site-feasibility-registration-form.page.ts
 import { Page, Locator, test, expect } from '@playwright/test';
 import { BasePage } from './base.page.js';
 import { ActionUtils } from '../utils/action-utils.js';
@@ -10,6 +9,7 @@ export class SiteFeasibilityRegistrationFormPage extends BasePage {
   private readonly formContainer: Locator; // Main form container
   private readonly accessLogIndicator: Locator; // Indicator/log message for access logging
   private readonly rmsRoleBadge: Locator; // Badge or indicator for RMS role
+  private readonly submissionMessage: Locator; // Confirmation message after submission
 
   constructor(page: Page) {
     super(page);
@@ -19,6 +19,7 @@ export class SiteFeasibilityRegistrationFormPage extends BasePage {
     this.formContainer = page.locator('locator("<PLACEHOLDER_form_container>")'); // TODO: Replace with actual locator
     this.accessLogIndicator = page.locator('locator("<PLACEHOLDER_access_log_indicator>")'); // TODO: Replace with actual locator
     this.rmsRoleBadge = page.locator('locator("<PLACEHOLDER_rms_role_badge>")'); // TODO: Replace with actual locator
+    this.submissionMessage = page.locator('locator("<PLACEHOLDER_submission_message>")'); // TODO: Replace with actual locator for submission confirmation
   }
 
   /**
@@ -34,11 +35,15 @@ export class SiteFeasibilityRegistrationFormPage extends BasePage {
 
   /**
    * Verifies that the Site Feasibility & Registration Form is displayed.
+   * @param text Optional text to match in the form title or container
    */
-  async isRegistrationFormDisplayed(): Promise<boolean> {
+  async isRegistrationFormDisplayed(text?: string): Promise<boolean> {
     await test.step('Verify Site Feasibility & Registration Form is displayed', async () => {
       await this.registrationFormTitle.waitFor({ state: 'visible', timeout: 10000 });
       await this.formContainer.waitFor({ state: 'visible', timeout: 10000 });
+      if (text) {
+        await expect(this.registrationFormTitle).toContainText(text);
+      }
     });
     return await this.registrationFormTitle.isVisible() && await this.formContainer.isVisible();
   }
@@ -88,6 +93,28 @@ export class SiteFeasibilityRegistrationFormPage extends BasePage {
       await submitButton.waitFor({ state: 'visible', timeout: 5000 });
       await ActionUtils.click(submitButton);
       await this.page.waitForLoadState('networkidle');
+    });
+  }
+
+  /**
+   * Gets the submission confirmation message displayed after successful form submission.
+   * @returns The confirmation message text
+   */
+  async getSubmissionMessage(): Promise<string> {
+    await test.step('Get submission confirmation message', async () => {
+      await this.submissionMessage.waitFor({ state: 'visible', timeout: 15000 });
+    });
+    return (await this.submissionMessage.textContent())?.trim() || '';
+  }
+
+  /**
+   * Verifies that the submission confirmation message matches the expected message.
+   * @param expectedMessage The expected confirmation message text
+   */
+  async verifySubmissionSuccess(expectedMessage: string): Promise<void> {
+    await test.step('Verify submission confirmation message', async () => {
+      await this.submissionMessage.waitFor({ state: 'visible', timeout: 15000 });
+      await expect(this.submissionMessage).toContainText(expectedMessage);
     });
   }
 }
