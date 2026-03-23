@@ -1,0 +1,13 @@
+{
+  "login": {
+    "username": "testuser.alznet.staging@example.com",
+    "password": "ValidP@ssw0rd1!"
+  },
+  "contact": {
+    "firstName": "Sivasai",
+    "lastName": "Arava",
+    "phone": "555-123-4567",
+    "company": "Acme Corp",
+    "email": "sivasai.arava@example.com"
+  }
+}
