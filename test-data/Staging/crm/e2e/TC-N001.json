@@ -1,0 +1,11 @@
+{
+  "username": "crmtester",
+  "password": "P@ssw0rd123",
+  "loginUrl": "https://crm.example.com/login",
+  "firstName": "Siva",
+  "lastName": "Arava",
+  "phone": "555-678-9012",
+  "company": "Acme Corp",
+  "email": "siva.arava@example.com",
+  "expectedMessage": "Saved successfully"
+}
