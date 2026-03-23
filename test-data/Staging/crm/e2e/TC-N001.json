@@ -1,0 +1,9 @@
+{
+  "contact": {
+    "firstName": "Alex",
+    "lastName": "Doe",
+    "phoneNumber": "555-123-4567",
+    "company": "Contoso Ltd",
+    "email": "alex.doe@example.com"
+  }
+}

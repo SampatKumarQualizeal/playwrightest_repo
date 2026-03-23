@@ -10,6 +10,7 @@ import { SiteFeasibilityRegistrationPage } from '@/pages/site-feasibility-regist
 import { StaffListPage } from '@/pages/staff-list.page.js';
 import { CaseListPage } from '@/pages/case-list.page.js';
 import { ChangeRequestListPage } from '@/pages/change-request-list.page.js';
+import { ContactsPage } from '@/pages/contacts.page.js';
 
 type pageObjects = {
   exploreDataPage: ExploreDataPage;
@@ -21,6 +22,7 @@ type pageObjects = {
   staffListPage: StaffListPage;
   caseListPage: CaseListPage;
   changeRequestListPage: ChangeRequestListPage;
+  contactsPage: ContactsPage;
 };
 
 // Test object export
@@ -49,8 +51,11 @@ export const test = base.extend<pageObjects>({
   caseListPage: async ({ page }, use) => { // Add this block
     await use(new CaseListPage(page));
   },
-   changeRequestListPage: async ({ page }, use) => { // Add this block
+  changeRequestListPage: async ({ page }, use) => { // Add this block
     await use(new ChangeRequestListPage(page));
+  },
+  contactsPage: async ({ page }, use) => {
+    await use(new ContactsPage(page));
   },
 });
 
