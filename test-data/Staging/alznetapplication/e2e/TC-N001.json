@@ -1,0 +1,38 @@
+{
+  "testCaseId": "TC-N001",
+  "login": {
+    "username": "contact.creator@alznetcrm.com",
+    "password": "QAZqaz852@"
+  },
+  "contact": {
+    "firstName": "Aiden",
+    "lastName": "McAllister",
+    "phone": "555-981-2345",
+    "company": "NeuroTech Solutions Inc.",
+    "email": "aiden.mcallister.tcn001@alznetcrm.com"
+  },
+  "status": {
+    "precondition": "LoggedIn",
+    "postcondition": "ContactSaved"
+  },
+  "meta": {
+    "createdBy": "automation",
+    "createdAt": "2024-06-23T00:00:00Z",
+    "description": "Test data for TC-N001: Create a new contact with valid details."
+  },
+  "envOverrides": {
+    "Staging": {
+      "login": {
+        "username": "contact.creator@alznetcrm.com",
+        "password": "QAZqaz852@"
+      },
+      "contact": {
+        "firstName": "Aiden",
+        "lastName": "McAllister",
+        "phone": "555-981-2345",
+        "company": "NeuroTech Solutions Inc.",
+        "email": "aiden.mcallister.tcn001@alznetcrm.com"
+      }
+    }
+  }
+}
