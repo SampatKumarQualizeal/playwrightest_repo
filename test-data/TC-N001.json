@@ -1,0 +1,10 @@
+{
+  "userName": "contactuser01",
+  "password": "ValidPassword123!",
+  "firstName": "Samantha",
+  "lastName": "Carter",
+  "phone": "555-987-6543",
+  "company": "Stellar Solutions Inc.",
+  "email": "samantha.carter@example.com",
+  "expectedMessage": "Contact created successfully."
+}
