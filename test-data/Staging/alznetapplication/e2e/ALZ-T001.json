@@ -1,0 +1,33 @@
+{
+  "siteFormName": "Site Feasibility & Registration Form",
+  "siteName": "TestAutomationSite001",
+  "physicalAddressStreet": "123 Memory Lane",
+  "physicalAddressCity": "Chicago",
+  "physicalAddressState": "Illinois",
+  "physicalAddressZip": "60616",
+  "physicalAddressCountry": "USA",
+  "physicalAddressTelephone": "312-555-0101",
+  "additionalFields": {
+    "principal-investigator": "Dr. Alice Franklin",
+    "start-date": "2024-07-01",
+    "number-of-beds": "200",
+    "site-type": "Hospital or medical center",
+    "hospital-type": "Public Hospital",
+    "region": "Midwest",
+    "fax-number": "312-555-0102"
+  },
+  "registrationFormText": {
+    "thankYouText": "Thank you for your interest in becoming a participating site of the Alzheimer’s Network for Treatment and Diagnostics (ALZ-NET).",
+    "pleaseNoteText": "Please note: Do not complete the form more than once for the same site location. If you have previously submitted a registration for this site, please contact the ALZ-NET team for assistance.",
+    "instructionsText": "Please complete the following questionnaire to register your site. Required fields are marked with an asterisk (*). After submission, the ALZ-NET team will review your information and contact you with next steps."
+  },
+  "draftText": "Your draft site registration form will be automatically deleted if there is 8 weeks of inactivity.",
+  "login": {
+    "email": "siteuseralznet001@gmail.com",
+    "password": "Test@1234!"
+  },
+  "SavedStatus": "Draft",
+  "SubmittedStatus": "Submitted",
+  "siteID": "Not Applicable",
+  "initialStatus": "Draft"
+}
