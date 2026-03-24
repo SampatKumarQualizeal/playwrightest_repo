@@ -33,6 +33,31 @@ acr-qmentis-alznet/
 └── tsconfig.json             # TypeScript compiler options
 ```
 
+## DIRL End-to-End Test Plan
+
+A new DIRL (Dose Index Registry Link) end-to-end test plan has been added to cover the full workflow for DIRL submission, as described in test case **DIRL-T745**. This plan is intended to verify the entire DIRL submission process from login through data upload and system verification, ensuring all steps and integrations function as expected.
+
+**Intent:**
+- Validate the end-to-end DIRL workflow for Facility Admin users, including login, Corporate ID authorization, facility activation, scanner mapping, data anonymization, upload, and verification in downstream systems (CBS, S3, SQL Server, Data Dog).
+
+**Test File Location & Naming:**
+- The DIRL E2E test specification is located at:
+  - `tests/specs/dirl/e2e/DIRLSubmissionWorkflow_DIRL-T745.spec.ts`
+- The test data file for this workflow is located at:
+  - `test-data/Staging/dirl/e2e/DIRL-T745.json`
+- Page Object Models used for DIRL workflow steps are located in:
+  - `src/pages/dirl/`
+
+**How to Contribute:**
+- To extend or maintain DIRL workflow tests, add or update spec files in `tests/specs/dirl/e2e/`.
+- Place any new or updated test data in `test-data/Staging/dirl/e2e/` following the `<JiraId>.json` naming convention.
+- Implement or update DIRL-specific Page Objects in `src/pages/dirl/`.
+- Ensure all test steps use Page Fixtures and interact with the application only via Page Objects (do not use raw locators in test files).
+- All test actions must include structured logging and robust synchronization (see code guidelines).
+
+**Reference:**
+- For details on the DIRL workflow and requirements, see the test case [DIRL-T745](#) (internal reference).
+
 ## Getting Started
 
 Follow these instructions to set up the project on your local machine.

@@ -1,0 +1,108 @@
+{
+  "corporateId": "202164",
+  "corporateName": "Assess AI Test Single Facility Corporate Organization",
+  "facilityName": "Test Automation Facility 01",
+  "facilityId": "FAC-001-ACT",
+  "scannerName": "Siemens SOMATOM Force CT",
+  "activationFlags": {
+    "corporateAuthorized": true,
+    "facilityActivated": false,
+    "scannerMapped": false,
+    "dataAnonymized": false,
+    "dataUploaded": false,
+    "activationCompleted": false
+  },
+  "expectedMessages": {
+    "siteSettingsActive": "DIR Link is activated",
+    "siteSettingsInactive": "DIR Link is not activated! Please register your facility in the NRDR Portal https://nrdrvendortest.acr.org/Portal/Nrdr/Main/page.aspx and enter the Corporate ID below. Only authorized members in the NRDR Portal will be able to activate DIR Link. If you have questions on who can perform this operation, please reach out to ACR Connect Support. <mailto:acrconnect@acr.org> NRDR Corporate ID",
+    "activationSuccess": "Activation Completed Successfully!!",
+    "corporateStatusAuthorized": "NRDR Corporate Status Authorized",
+    "corporateFacilityId": "NRDR Corporate Facility ID 202164",
+    "corporateFacilityName": "NRDR Corporate Name Assess AI Test Single Facility Corporate Organization",
+    "scannerMappingPopup": "All scanner details are auto-populated except Facility ID and Facility Name. Corporate ID field should be visible and empty. Authorize button is disabled (not clickable)."
+  },
+  "uiElements": {
+    "tabs": [
+      "Site Settings",
+      "Receiver Settings",
+      "Scanner Mapping",
+      "File Validation Settings",
+      "Unmapped Scanners"
+    ],
+    "hamburgerMenu": [
+      "Activity Monitor",
+      "Settings"
+    ],
+    "activityMonitorTiles": [
+      "SUCCESS",
+      "FAILURE",
+      "NOT STARTED"
+    ],
+    "activityMonitorFilters": {
+      "operation": [
+        "All",
+        "Data Validation",
+        "Facility Mapping",
+        "Anonymization",
+        "Upload"
+      ],
+      "status": [
+        "Success",
+        "Failure",
+        "Not Started"
+      ]
+    },
+    "activityMonitorColumns": [
+      "StudyInstanceUID",
+      "Study Description",
+      "Date Time",
+      "Data Validation",
+      "Facility Mapping",
+      "Anonymization",
+      "Data Upload",
+      "Action"
+    ]
+  },
+  "testDataReferences": {
+    "nrdrPortalUrl": "https://nrdrvendortest.acr.org/Portal/Nrdr/Main/page.aspx",
+    "acrConnectSupportEmail": "acrconnect@acr.org"
+  },
+  "dbVerification": {
+    "dirServiceTables": [
+      "receivedddiocmfiles",
+      "datasubmissiontaskitems",
+      "datasubmissiontasks"
+    ],
+    "cbsDbsTables": [
+      "dcmstudies",
+      "dcmseries",
+      "transactions",
+      "dirtransactions",
+      "dcmobjects"
+    ],
+    "doseIndexTables": [
+      "Dose Index",
+      "DR Dose Index"
+    ]
+  },
+  "s3Verification": {
+    "bucketName": "dirl-data-bucket-dev",
+    "expectedFilePattern": "202164/FAC-001-ACT/Siemens_SOMATOM_Force_CT/*.dcm"
+  },
+  "logVerification": {
+    "dataDogService": "DEV-DCS",
+    "expectedLogPattern": "DIRL submission for Corporate ID 202164, Facility FAC-001-ACT, Scanner Siemens SOMATOM Force CT processed successfully"
+  },
+  "logs": [
+    {
+      "timestamp": "2024-06-01T09:00:00Z",
+      "level": "INFO",
+      "message": "Loaded test data DIRL-T745.json for DIRL end-to-end submission workflow."
+    },
+    {
+      "timestamp": "2024-06-01T09:00:01Z",
+      "level": "DEBUG",
+      "message": "Test data fields validated: corporateId, facilityName, scannerName, activationFlags, expectedMessages."
+    }
+  ]
+}

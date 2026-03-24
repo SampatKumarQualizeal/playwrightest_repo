@@ -93,4 +93,8 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+
+  // The following testMatch ensures all tests under tests/specs/alznetapplication/e2e are included.
+  // No exclusion pattern is present that would exclude this directory.
+  // If you add exclusion patterns in the future, ensure to not exclude 'tests/specs/alznetapplication/e2e'.
 });

@@ -229,3 +229,57 @@ await page.screenshot({ path: 'random.png' });
 ```ts
 await this.takeScreenshot();
 ```
+
+---
+
+## 8. DIRL-DirLFlowPage Integration & Synchronization Patterns
+
+**What:** When integrating DIRL end-to-end flows (e.g., with DirLFlowPage), always use explicit synchronization patterns that distinguish between navigation and UI actions. Structure all major workflow steps using `test.step` for clarity and traceability.
+
+**Best Practices:**
+- **Navigation Actions:**
+  - Always wait for `networkidle` after navigation (e.g., after `page.goto` or menu navigation).
+  - Additionally, wait for a key UI element unique to the destination page to ensure readiness.
+  - **Example:**
+    ```typescript
+    await page.goto(url);
+    await page.waitForLoadState('networkidle');
+    await page.locator('text=Dashboard').waitFor({ state: 'visible' });
+    ```
+- **UI Interactions:**
+  - Use locator-based waits before interacting (e.g., `locator.waitFor({ state: 'visible' })`).
+  - Avoid page-level waits for UI element readiness.
+  - **Example:**
+    ```typescript
+    await page.locator('button:has-text("Log In")').waitFor({ state: 'visible' });
+    await page.locator('button:has-text("Log In")').click();
+    ```
+- **API-driven Actions:**
+  - For actions that trigger backend/API processing (e.g., submit, save), use `waitForResponse` for the relevant API call, then confirm via UI state.
+  - **Example:**
+    ```typescript
+    const [response] = await Promise.all([
+      page.waitForResponse(resp => resp.url().includes('/api/submit') && resp.status() === 200),
+      page.locator('button:has-text("Submit")').click()
+    ]);
+    await page.locator('text=Submission Successful').waitFor({ state: 'visible' });
+    ```
+- **Dynamic/Lazy UI:**
+  - For dynamic content, use `locator.waitFor()` and `scrollIntoViewIfNeeded()` as needed.
+
+**Step Labelling:**
+- Use `test.step('Descriptive Step Name', async () => { ... })` for each major workflow action in end-to-end DIRL flows.
+- This improves test logs, reporting, and debugging.
+- **Example:**
+  ```typescript
+  await test.step('Authorize Corporate ID', async () => {
+    await page.locator('input[name="corporateId"]').fill('123456');
+    await page.locator('button:has-text("Authorize")').click();
+    await page.locator('text=DIR Link is activated').waitFor({ state: 'visible' });
+  });
+  ```
+
+**Summary:**
+- Always distinguish navigation waits (networkidle + UI element) from UI waits (locator-based).
+- Never use `waitForLoadState('domcontentloaded')` or `waitForTimeout()`.
+- Label all major steps with `test.step` for maintainability and diagnostics in DIRL end-to-end automation.
