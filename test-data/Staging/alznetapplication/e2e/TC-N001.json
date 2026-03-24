@@ -1,0 +1,14 @@
+{
+  "login": {
+    "username": "testuser@example.com",
+    "password": "QAZqaz852@"
+  },
+  "contact": {
+    "firstName": "Siva",
+    "lastName": "Arava",
+    "phone": "555-123-4567",
+    "company": "Acme Corp",
+    "email": "siva.arava@example.com"
+  },
+  "expectedMessage": "Contact saved successfully"
+}
