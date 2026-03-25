@@ -1,0 +1,10 @@
+{
+  "contact": {
+    "firstName": "Siva",
+    "lastName": "Arava",
+    "phone": "555-0101",
+    "company": "ACME Corp",
+    "email": "siva.arava@example.com"
+  },
+  "expectedMessage": "Contact saved successfully"
+}
