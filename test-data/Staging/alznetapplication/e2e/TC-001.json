@@ -1,0 +1,47 @@
+{
+  "siteFormName": "Site Feasibility & Registration Form",
+  "siteName": "TestAutomationSite001",
+  "siteAddress": "456 Innovation Drive, Cambridge, MA, USA",
+  "physicalAddressStreet": "456 Innovation Drive",
+  "physicalAddressZip": "02139",
+  "physicalAddressCity": "Cambridge",
+  "physicalAddressState": "MA",
+  "physicalAddressTelephone": "617-555-7890",
+  "physicalAddressFax": "617-555-7891",
+  "siteType": "Hospital or medical center",
+  "hospitalType": "Public Hospital",
+  "contactEmail": "siteuseralznet+001@gmail.com",
+  "contactPhone": "617-555-7890",
+  "additionalFields": {
+    "principal-investigator": "Dr. Alice Robertson",
+    "principal-investigator-email": "alice.robertson@alzsite.org",
+    "primary-contact-name": "Bob Williams",
+    "primary-contact-email": "bob.williams@alzsite.org",
+    "primary-contact-phone": "617-555-7892",
+    "number-of-beds": "200",
+    "has-ethics-approval": "Yes",
+    "start-date": "2024-07-01",
+    "end-date": "2025-06-30"
+  },
+  "imagingFacilityName": "Cambridge Imaging Center",
+  "patientPopulation": {
+    "AmericanIndian": 5,
+    "AsianAmerican": 20,
+    "BlackOrAfricanAmerican": 15,
+    "European": 40,
+    "HispanicOrLatino": 10,
+    "NativeHawaiianOrOtherPacificIslander": 2,
+    "Other": 3
+  },
+  "SavedStatus": "Draft",
+  "SubmittedStatus": "Submitted",
+  "siteID": "Not Applicable",
+  "initialStatus": "Draft",
+  "loggedInUser": "siteuseralznet+001@gmail.com",
+  "draftText": "Your draft site registration form will be automatically deleted if there is 8 weeks of inactivity.",
+  "registrationFormText": {
+    "thankYouText": "Thank you for registering your site with ALZ-NET.",
+    "pleaseNoteText": "Please note: All fields marked with an asterisk (*) are required.",
+    "instructionsText": "Complete all sections of the form and click Submit to register your site. If you need to pause, your progress will be saved as a draft."
+  }
+}
