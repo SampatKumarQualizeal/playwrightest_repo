@@ -1,0 +1,25 @@
+{
+  "contactFormName": "Contact Creation Form",
+  "firstName": "Sampat",
+  "lastName": "Kumar",
+  "phoneNumber": "555-987-6543",
+  "company": "Qualizeal Technologies",
+  "email": "sampat.kumar@qualizeal.com",
+  "additionalFields": {
+    "category": "Lead",
+    "region": "South-East",
+    "start-date": "2024-07-01",
+    "end-date": "2025-06-30",
+    "has-ethics-approval": "Yes"
+  },
+  "contactStatus": {
+    "SavedStatus": "Draft",
+    "SubmittedStatus": "Saved",
+    "initialStatus": "Draft"
+  },
+  "contactFormText": {
+    "successMessage": "Contact created successfully.",
+    "errorMessage": "There was a problem creating the contact. Please try again.",
+    "instructionsText": "Please fill out all required fields with valid information. The email must be in a valid format (e.g., user@example.com)."
+  }
+}

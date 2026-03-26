@@ -51,22 +51,62 @@ export class LoginPage extends BasePage {
 
   async goto(url: string): Promise<void> {
     await test.step('Launch the application', async () => {
-      await this.page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
+      await this.page.goto(url, { waitUntil: 'networkidle', timeout: 90000 });
+      // Wait for login page to be visible for robust navigation
+      await this.usernameField.waitFor({ state: 'visible' });
     });
   }
 
   async login(username: string, password: string): Promise<void> {
     await test.step('Login to Application', async () => {
-      await ActionUtils.click(this.loginButton);
-      await this.page.waitForLoadState('domcontentloaded');
-      await this.usernameField.waitFor({ state: 'visible' });
-      await ActionUtils.fill(this.usernameField, username);
-      await ActionUtils.click(this.loginBtn);
-      await this.loginPasswordField.waitFor({ state: 'visible' });
-      await ActionUtils.fill(this.loginPasswordField, password);
-      await ActionUtils.click(this.loginBtn);
-      await this.loadingIcon.waitFor({ state: 'hidden' });
-      await expect(this.page).toHaveURL(/home/);
+      try {
+        await ActionUtils.click(this.loginButton);
+        await this.page.waitForLoadState('networkidle');
+        await this.usernameField.waitFor({ state: 'visible' });
+        await ActionUtils.fill(this.usernameField, username);
+        await ActionUtils.click(this.loginBtn);
+        await this.loginPasswordField.waitFor({ state: 'visible' });
+        await ActionUtils.fill(this.loginPasswordField, password);
+        await ActionUtils.click(this.loginBtn);
+        await this.loadingIcon.waitFor({ state: 'hidden' });
+        await expect(this.page).toHaveURL(/home/);
+      } catch (error) {
+        // Structured logging for error context
+        // eslint-disable-next-line no-console
+        console.error('[LoginPage][login] Login failed', { message: (error as Error).message, stack: (error as Error).stack });
+        throw error;
+      }
+    });
+  }
+
+  /**
+   * Logs in using environment credentials (ENV.USERNAME, ENV.PASSWORD)
+   * For use in tests that require a standard login step.
+   * Includes robust logging and error handling.
+   */
+  async loginWithEnvCredentials(): Promise<void> {
+    await test.step('Login using ENV credentials', async () => {
+      try {
+        // Structured log before action
+        // eslint-disable-next-line no-console
+        console.info('[LoginPage][loginWithEnvCredentials] Logging in with ENV credentials');
+        const username = ENV.USERNAME;
+        const password = ENV.PASSWORD;
+        if (!username || !password) {
+          // eslint-disable-next-line no-console
+          console.error('[LoginPage][loginWithEnvCredentials] ENV credentials missing');
+          throw new Error('Environment credentials (USERNAME or PASSWORD) are not set.');
+        }
+        await this.login(username, password);
+        // Structured log after success
+        // eslint-disable-next-line no-console
+        console.info('[LoginPage][loginWithEnvCredentials] Login successful');
+      } catch (error) {
+        // Structured error log
+        // eslint-disable-next-line no-console
+        console.error('[LoginPage][loginWithEnvCredentials] Login failed', { message: (error as Error).message, stack: (error as Error).stack });
+        throw error;
+      }
     });
   }
 

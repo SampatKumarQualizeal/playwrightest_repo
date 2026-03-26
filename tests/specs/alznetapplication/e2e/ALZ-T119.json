@@ -1,0 +1,25 @@
+{
+  "contactFormName": "Contact Creation Form",
+  "firstName": "Sampat",
+  "lastName": "Kumar",
+  "phoneNumber": "555-987-1234",
+  "company": "Qualizeal Solutions",
+  "email": "validemail.com",
+  "additionalFields": {
+    "category": "Lead",
+    "region": "South-East",
+    "contact-method": "Email",
+    "start-date": "2024-08-01"
+  },
+  "expectedResult": "System displays appropriate message.",
+  "postConditions": "New contact is saved in the CRM system.",
+  "priority": "Medium",
+  "testCaseId": "TC-N001",
+  "testCaseName": "Create a new contact",
+  "testObjective": "Verify system accepts valid inputs and displays appropriate message.",
+  "testSteps": [
+    "Enter valid data in firstName, lastName, Phone Number, Company, and valid email format (e.g., 'validemail.com').",
+    "Click the 'Save' button."
+  ],
+  "notes": "No authentication or credential data included. All test data fields are non-sensitive and suitable for public test execution."
+}
