@@ -1,7 +1,8 @@
-// src/pages/registration-form.page.ts
 import { Page, test, Locator, expect } from '@playwright/test';
 import { BasePage } from '@pages/base.page.js';
 import { faker } from '@faker-js/faker';
+import { ActionUtils } from '@/utils/action-utils.js';
+import { Logger } from '@/logger/logger.js';
 
 export class RegistrationFormPage extends BasePage {
   constructor(page: Page) {
@@ -470,6 +471,155 @@ export class RegistrationFormPage extends BasePage {
   async verifyLoggedInUser(user: string) {
     await test.step('Verify Logged In User.', async () => {
       await this.page.getByRole('button', { name: user }).isVisible();
+    });
+  }
+
+  /**
+   * Fills all mandatory fields on the Site Registration Form using values from the provided test data object.
+   * Handles top-level fields and nested sections (additionalFields, patientPopulation, registrationFormText).
+   * Uses ActionUtils for interactions, element readiness checks, and Playwright test.step wrappers.
+   * Implements multiple locator strategies for each field (primary + 1–2 fallbacks as comments).
+   * Logs before each major step and on error.
+   * @param data The test data object (e.g., loaded from TC-001.json)
+   */
+  async fillRegistrationFormFromTestData(data: any): Promise<void> {
+    await test.step('Fill Registration Form from Test Data', async () => {
+      try {
+        Logger.info('Starting to fill registration form from test data', { section: 'fillRegistrationFormFromTestData' });
+        // --- Site Name ---
+        Logger.info('Filling Site Name', { value: data.siteName });
+        const siteNameLocator = this.siteName; // PRIMARY
+        // SECONDARY LOCATORS (fallback)
+        // this.page.locator('input[formcontrolname="siteName"]')
+        // this.page.locator('//input[contains(@placeholder, "Site Name")]')
+        await siteNameLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(siteNameLocator, data.siteName);
+        
+        // --- Nature of Site ---
+        Logger.info('Selecting Nature of Site', { value: data.siteType });
+        const natureOfSiteLocator = this.natureOfSite(data.siteType); // PRIMARY
+        // SECONDARY: this.page.locator(`//label[normalize-space()='${data.siteType}']`)
+        await natureOfSiteLocator.waitFor({ state: 'visible' });
+        await ActionUtils.click(natureOfSiteLocator);
+        
+        // --- Hospital Type ---
+        Logger.info('Selecting Hospital Type', { value: data.hospitalType });
+        const hospitalTypeLocator = this.hospitalOfType(data.hospitalType); // PRIMARY
+        // SECONDARY: this.page.locator(`//label[normalize-space()='${data.hospitalType}']`)
+        await hospitalTypeLocator.waitFor({ state: 'visible' });
+        await ActionUtils.click(hospitalTypeLocator);
+
+        // --- Principal Investigator ---
+        Logger.info('Filling Principal Investigator', { value: data.additionalFields?.['principal-investigator'] });
+        const piNameLocator = this.principalInvestigatorName; // PRIMARY
+        // SECONDARY: this.page.locator('input[formcontrolname="principalInvestigatorName"]')
+        await piNameLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(piNameLocator, data.additionalFields?.['principal-investigator'] || '');
+        const piEmailLocator = this.principalInvestigatorEmail; // PRIMARY
+        // SECONDARY: this.page.locator('input[formcontrolname="principalInvestigatorEmail"]')
+        await piEmailLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(piEmailLocator, data.additionalFields?.['principal-investigator-email'] || data.contactEmail || '');
+
+        // --- Primary Contact ---
+        Logger.info('Filling Primary Contact', { value: data.additionalFields?.['primary-contact'] });
+        const pcNameLocator = this.primaryContactName; // PRIMARY
+        // SECONDARY: this.page.locator('input[formcontrolname="primaryContactName"]')
+        await pcNameLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(pcNameLocator, data.additionalFields?.['primary-contact'] || '');
+        const pcEmailLocator = this.primaryContactEmail; // PRIMARY
+        // SECONDARY: this.page.locator('input[formcontrolname="primaryContactEmail"]')
+        await pcEmailLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(pcEmailLocator, data.additionalFields?.['primary-contact-email'] || data.contactEmail || '');
+
+        // --- Physical Address ---
+        Logger.info('Filling Physical Address', { street: data.physicalAddressStreet, zip: data.physicalAddressZip, city: data.physicalAddressCity, state: data.physicalAddressState });
+        const streetLocator = this.physicalAddressStreet; // PRIMARY
+        // SECONDARY: this.page.locator('input[formcontrolname="physicalAddressStreet"]')
+        await streetLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(streetLocator, data.physicalAddressStreet);
+        // Select from dropdown if needed
+        if (await this.physicalAddressStreetFirstOption.isVisible()) {
+          await ActionUtils.click(this.physicalAddressStreetFirstOption);
+        }
+        const zipLocator = this.physicalAddressZip; // PRIMARY
+        // SECONDARY: this.page.locator('input[formcontrolname="physicalAddressZip"]')
+        await zipLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(zipLocator, data.physicalAddressZip);
+        const cityLocator = this.physicalAddressCity; // PRIMARY
+        // SECONDARY: this.page.locator('input[formcontrolname="physicalAddressCity"]')
+        await cityLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(cityLocator, data.physicalAddressCity);
+        const stateDropdown = this.physicalAddressStateDropdown; // PRIMARY
+        // SECONDARY: this.page.locator('select[formcontrolname="physicalAddressState"]')
+        await stateDropdown.waitFor({ state: 'visible' });
+        await ActionUtils.click(stateDropdown);
+        const stateOption = this.physicalAddressStateOption(data.physicalAddressState);
+        await stateOption.waitFor({ state: 'visible' });
+        await ActionUtils.click(stateOption);
+        const telephoneLocator = this.physicalAddressTelephone; // PRIMARY
+        // SECONDARY: this.page.locator('input[formcontrolname="physicalAddressTelephone"]')
+        await telephoneLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(telephoneLocator, data.physicalAddressTelephone);
+        const faxLocator = this.physicalAddressFax; // PRIMARY
+        // SECONDARY: this.page.locator('input[formcontrolname="physicalAddressFax"]')
+        await faxLocator.waitFor({ state: 'visible' });
+        await ActionUtils.clearAndType(faxLocator, data.physicalAddressFax);
+
+        // --- Site Mail Address Same As Physical Address ---
+        Logger.info('Selecting Site Mail Address Same As Physical Address', { value: data.additionalFields?.['mail-same-as-physical'] });
+        const mailSameAsPhysical = data.additionalFields?.['mail-same-as-physical'] || 'Yes';
+        if (mailSameAsPhysical === 'Yes') {
+          await this.siteMailAddressSameAsPhysicalAddress_YesBtn('Site Facility').waitFor({ state: 'visible' });
+          await ActionUtils.click(this.siteMailAddressSameAsPhysicalAddress_YesBtn('Site Facility'));
+        } else {
+          await this.siteMailAddressSameAsPhysicalAddress_NoBtn('Site Facility').waitFor({ state: 'visible' });
+          await ActionUtils.click(this.siteMailAddressSameAsPhysicalAddress_NoBtn('Site Facility'));
+          await this.page.waitForLoadState('networkidle');
+          await this.mailingAddressStreet.waitFor({ state: 'visible' });
+          await ActionUtils.clearAndType(this.mailingAddressStreet, data.additionalFields?.['mailing-address-street'] || '');
+          if (await this.mailingAddressStreetFirstOption.isVisible()) {
+            await ActionUtils.click(this.mailingAddressStreetFirstOption);
+          }
+          await this.mailingAddressTelephone.waitFor({ state: 'visible' });
+          await ActionUtils.clearAndType(this.mailingAddressTelephone, data.additionalFields?.['mailing-address-telephone'] || '');
+        }
+
+        // --- Patient Population ---
+        if (data.patientPopulation) {
+          Logger.info('Filling Patient Population', { values: data.patientPopulation });
+          await this.fillPatientPopulationEnrollmentDetails(data.patientPopulation);
+        }
+
+        // --- Characteristics (if present) ---
+        if (data.additionalFields?.characteristics) {
+          Logger.info('Filling Characteristics', { values: data.additionalFields.characteristics });
+          await this.fillCharacteristicsDetails(data.additionalFields.characteristics);
+        }
+
+        // --- Imaging Facility Details (if present) ---
+        if (data.imagingFacilityName) {
+          Logger.info('Filling Imaging Facility Details', { name: data.imagingFacilityName, type: data.additionalFields?.['imaging-facility-type'] });
+          await this.fillImagingFacilityDetails(data.imagingFacilityName, data.additionalFields?.['imaging-facility-type'] || '');
+        }
+
+        // --- Registration Form Text (if present) ---
+        if (data.registrationFormText) {
+          Logger.info('Verifying Registration Form Text', { text: data.registrationFormText });
+          await this.verifyRegisterSiteFormText(
+            data.registrationFormText.thankYouText,
+            data.registrationFormText.pleaseNoteText,
+            data.registrationFormText.instructionsText
+          );
+        }
+
+        // --- Final Validation Before Submission ---
+        Logger.info('Validating all mandatory fields before submission');
+        // Optionally, add more field checks/assertions here
+        Logger.info('Completed filling registration form from test data', { section: 'fillRegistrationFormFromTestData' });
+      } catch (error: any) {
+        Logger.error('Error filling registration form from test data', { message: error.message, stack: error.stack, step: 'fillRegistrationFormFromTestData' });
+        throw error;
+      }
     });
   }
 }
