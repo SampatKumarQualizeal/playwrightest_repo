@@ -1,0 +1,9 @@
+{
+  "testCaseId": "TC-N001",
+  "description": "Create a new contact",
+  "firstName": "Siva",
+  "lastName": "Aravind",
+  "phoneNumber": "+1-555-123-4567",
+  "company": "Acme Corp",
+  "email": "siva.aravind@example.com"
+}
