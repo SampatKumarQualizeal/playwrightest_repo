@@ -55,18 +55,49 @@ export class LoginPage extends BasePage {
     });
   }
 
+  /**
+   * Reusable login method for test automation.
+   * Accepts credentials as parameters and performs the login flow with explicit synchronization and logging.
+   * Recommended usage: await loginPage.login(ENV.username, ENV.password)
+   */
   async login(username: string, password: string): Promise<void> {
     await test.step('Login to Application', async () => {
-      await ActionUtils.click(this.loginButton);
-      await this.page.waitForLoadState('domcontentloaded');
-      await this.usernameField.waitFor({ state: 'visible' });
-      await ActionUtils.fill(this.usernameField, username);
-      await ActionUtils.click(this.loginBtn);
-      await this.loginPasswordField.waitFor({ state: 'visible' });
-      await ActionUtils.fill(this.loginPasswordField, password);
-      await ActionUtils.click(this.loginBtn);
-      await this.loadingIcon.waitFor({ state: 'hidden' });
-      await expect(this.page).toHaveURL(/home/);
+      // --- Logging: Starting login flow ---
+      console.info('[LoginPage] Initiating login', { step: 'start', username: !!username ? '[provided]' : '[missing]' });
+      try {
+        // Click the initial login button ("Login")
+        console.info('[LoginPage] Clicking Login button', { step: 'click-login' });
+        await ActionUtils.click(this.loginButton);
+        // Wait for username field to be visible
+        await this.usernameField.waitFor({ state: 'visible' });
+        console.info('[LoginPage] Username field visible', { step: 'username-visible' });
+        // Fill username
+        await ActionUtils.fill(this.usernameField, username);
+        console.info('[LoginPage] Username entered', { step: 'username-filled' });
+        // Click the next login button ("Log In")
+        await ActionUtils.click(this.loginBtn);
+        // Wait for password field to be visible
+        await this.loginPasswordField.waitFor({ state: 'visible' });
+        console.info('[LoginPage] Password field visible', { step: 'password-visible' });
+        // Fill password
+        await ActionUtils.fill(this.loginPasswordField, password);
+        console.info('[LoginPage] Password entered', { step: 'password-filled' });
+        // Click Log In to submit
+        await ActionUtils.click(this.loginBtn);
+        console.info('[LoginPage] Submitted login form', { step: 'login-submit' });
+        // Wait for loading icon to disappear (UI readiness)
+        await this.loadingIcon.waitFor({ state: 'hidden' });
+        // Wait for navigation to home (explicit synchronization)
+        await this.page.waitForLoadState('networkidle');
+        console.info('[LoginPage] Login successful, navigated to home', { step: 'login-success' });
+        await expect(this.page).toHaveURL(/home/);
+        // --- Logging: Login completed ---
+        console.info('[LoginPage] Login flow completed', { step: 'end' });
+      } catch (error: any) {
+        // --- Logging: Error ---
+        console.error('[LoginPage] Login failed', { message: error.message, stack: error.stack, step: 'error' });
+        throw error;
+      }
     });
   }
 
