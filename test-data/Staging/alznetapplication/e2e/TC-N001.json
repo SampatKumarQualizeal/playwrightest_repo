@@ -1,0 +1,10 @@
+{
+  "contactData": {
+    "firstName": "Automation",
+    "lastName": "User",
+    "phone": "+1-555-0101",
+    "company": "Acme Corp",
+    "email": "automation.user@example.com"
+  },
+  "expectedNotification": "Contact saved successfully"
+}
