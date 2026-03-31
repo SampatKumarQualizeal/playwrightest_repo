@@ -1,0 +1,224 @@
+{
+  "registrationText": {
+    "welcomeText": "Welcome to DIR Link Submission Portal.",
+    "siteSettingsHeader": "DIR Link Site Settings",
+    "activationSuccessMessage": "Activation Completed Successfully!!",
+    "activationWarningMessage": "DIR Link is not activated! Please register your facility in the NRDR Portal and enter the Corporate ID below.",
+    "facilityMappingFailureTooltip": "Facility mapping cannot be found for the scanner identified in this DICOM study. A new scanner profile has been created, please open un-mapped scanners to map the scanner to an NRDR Facility.",
+    "scannerMappingCompletedMessage": "Scanner-mapping updated successfully. Studies received from this scanner will now be processed automatically.",
+    "thankYouText": "Thank you for using the DIR Link Submission workflow. Please ensure your Corporate ID and Facility IDs are authorized and activated for submissions.",
+    "instructionsText": "After entering a valid NRDR Corporate ID and activating your facility, you may proceed to map scanners and submit studies. Use the Activity Monitor to track submission status."
+  },
+  "facilityMapping": {
+    "nrdrCorporateId": "202164",
+    "nrdrCorporateName": "Assess AI Test",
+    "nrdrCorporateStatus": "Authorized",
+    "singleFacilityCorporateOrganization": false,
+    "facilities": [
+      {
+        "facilityId": "119010",
+        "facilityName": "Test Facility Automation 1",
+        "status": "Inactive",
+        "activatedBy": "",
+        "numberOfScanners": 0
+      },
+      {
+        "facilityId": "119011",
+        "facilityName": "Test Facility Automation 2",
+        "status": "Inactive",
+        "activatedBy": "",
+        "numberOfScanners": 0
+      }
+    ],
+    "activationPopup": {
+      "successMessage": "Activation Completed Successfully!!",
+      "closeButtonLabel": "Close"
+    }
+  },
+  "scannerDetails": {
+    "unmappedScanners": [
+      {
+        "modality": "CT",
+        "stationName": "CT_STATION_001",
+        "manufacturer": "Siemens",
+        "modelName": "SOMATOM Definition",
+        "institutionName": "Test Facility Automation 1",
+        "deviceSerialNo": "SN123456",
+        "softwareVersion": "VB20A",
+        "numberOfStudies": 1,
+        "numberOfFiles": 25,
+        "action": "Map with Facility"
+      },
+      {
+        "modality": "MR",
+        "stationName": "MR_STATION_002",
+        "manufacturer": "GE Healthcare",
+        "modelName": "Signa Explorer",
+        "institutionName": "Test Facility Automation 2",
+        "deviceSerialNo": "SN654321",
+        "softwareVersion": "28.3",
+        "numberOfStudies": 1,
+        "numberOfFiles": 18,
+        "action": "Map with Facility"
+      }
+    ],
+    "mappingPopup": {
+      "fields": [
+        "Facility ID",
+        "Facility Name",
+        "Station Name (0008,1010)",
+        "Manufacturer (0008,0070)",
+        "Model Name (0008,1090)",
+        "Institution Name (0008,0080)",
+        "Device Serial No. (0018,1000)",
+        "Software Version (0018,1020)"
+      ],
+      "facilityDropdownOptions": [
+        {
+          "facilityId": "119010",
+          "facilityName": "Test Facility Automation 1"
+        },
+        {
+          "facilityId": "119011",
+          "facilityName": "Test Facility Automation 2"
+        }
+      ],
+      "completedMessage": "Scanner-mapping updated successfully. Studies received from this scanner will now be processed automatically.",
+      "closeButtonLabel": "Close"
+    }
+  },
+  "expectedResults": {
+    "homePageElements": [
+      "ACR logo",
+      "Already have an account? section",
+      "Email Address input field",
+      "Remember me checkbox",
+      "Log In button",
+      "Don’t have an account? section",
+      "Create an account button"
+    ],
+    "login": {
+      "emailAccepted": true,
+      "passwordFieldAppears": true,
+      "authenticated": true,
+      "redirectsToDashboard": true,
+      "modulesLoad": ["Applications", "Utilities"]
+    },
+    "siteSettingsTabs": [
+      "Site Settings",
+      "Receiver Settings",
+      "Scanner Mapping",
+      "File Validation Settings",
+      "Unmapped Scanners"
+    ],
+    "hamburgerMenu": [
+      "Activity Monitor",
+      "Settings"
+    ],
+    "facilityActivation": {
+      "activationPopupMessage": "Activation Completed Successfully!!",
+      "facilityStatusAfterActivation": "Active",
+      "activatedByEmailVisible": true,
+      "accessibleTabsAfterActivation": [
+        "Site Settings",
+        "Receiver Settings",
+        "Scanner Mapping",
+        "File Validation Settings",
+        "Unmapped Scanners",
+        "Activity Monitor"
+      ]
+    },
+    "activityMonitor": {
+      "statusSummaryTiles": ["SUCCESS", "FAILURE", "NOT STARTED"],
+      "filterSection": {
+        "filterByOperation": ["All", "Data Validation", "Facility Mapping", "Anonymization", "Upload"],
+        "filterByStatus": ["Success", "Failure", "Not Started"],
+        "searchFieldLabel": "Search by StudyInstanceUID or Study Description"
+      },
+      "activityTableColumns": [
+        "StudyInstanceUID",
+        "Study Description",
+        "Date Time",
+        "Data Validation",
+        "Facility Mapping",
+        "Anonymization",
+        "Data Upload",
+        "Action"
+      ]
+    },
+    "receiverSettings": {
+      "status": "Running",
+      "receiverDetails": {
+        "name": "Default ACR Connect Listener DIR",
+        "hostnameOrIp": "0.0.0.0",
+        "aeTitle": "DIR_AE",
+        "port": "104"
+      },
+      "facilityTableColumns": [
+        "NRDR Facility ID",
+        "NRDR Facility Name",
+        "No. of Scanners"
+      ],
+      "addScannerButtonVisible": true,
+      "pagination": {
+        "itemsPerPage": 5,
+        "showing": "1 – 1 of 1",
+        "backButton": true,
+        "nextButton": true
+      }
+    },
+    "fileValidationSettings": {
+      "buttons": ["Add", "Delete"],
+      "warningMessages": [
+        "There are no localizer validation configurations set-up for this DIRLink instance.",
+        "If you would like to create a localizer configuration, please click Add."
+      ],
+      "pagination": {
+        "backButton": true,
+        "nextButton": true
+      }
+    },
+    "unmappedScanners": {
+      "tableColumns": [
+        "Modality (0008, 0060)",
+        "Station Name (0008, 1010)",
+        "Manufacturer (0008, 0070)",
+        "Model Name (0008, 1090)",
+        "Institution Name (0008, 0080)",
+        "Device Serial No. (0018, 1000)",
+        "Software Version (0018, 1020)",
+        "No. of Studies",
+        "No. of Files",
+        "Action: Map with Facility"
+      ],
+      "pagination": {
+        "itemsPerPage": 10,
+        "showing": "1 – 2 of 2",
+        "backButton": true,
+        "nextButton": false
+      }
+    },
+    "dataFlow": {
+      "studySentFromCanvas": true,
+      "receivedOnDIRListener": true,
+      "appearsInActivityMonitor": true,
+      "facilityMappingStatus": "Success",
+      "anonymizationStatus": "Success",
+      "dataUploadStatus": "Success",
+      "databaseTables": [
+        "receivedddiocmfiles",
+        "datasubmissiontaskitems",
+        "datasubmissiontasks",
+        "uploadtasks",
+        "dcmstudies",
+        "dcmseries",
+        "transactions",
+        "dirtransactions",
+        "dcmobjects"
+      ],
+      "s3BucketEntry": true,
+      "datadogLogVerification": true,
+      "doseIndexDatabaseEntry": true
+    }
+  }
+}
