@@ -1,0 +1,46 @@
+{
+  "nrdrCorporateId": "<NRDR_CORPORATE_ID_PLACEHOLDER>",
+  "corporateName": "<CORPORATE_NAME_PLACEHOLDER>",
+  "corporateStatus": "Authorized",
+  "availableFacilities": [
+    {
+      "facilityId": "119010",
+      "facilityName": "<FACILITY_NAME_PLACEHOLDER>",
+      "numScanners": "2",
+      "status": "Inactive"
+    }
+  ],
+  "receiverSettings": {
+    "status": "Running",
+    "name": "Default ACR Connect Listener DIR",
+    "hostname": "0.0.0.0",
+    "aeTitle": "DIR_AE",
+    "port": "104"
+  },
+  "scannerMappings": [
+    {
+      "modality": "CT",
+      "stationName": "<STATION_NAME_PLACEHOLDER>",
+      "manufacturer": "<MANUFACTURER_PLACEHOLDER>",
+      "modelName": "<MODEL_NAME_PLACEHOLDER>",
+      "institutionName": "<INSTITUTION_NAME_PLACEHOLDER>",
+      "deviceSerialNo": "<DEVICE_SERIAL_NO_PLACEHOLDER>",
+      "softwareVersion": "<SOFTWARE_VERSION_PLACEHOLDER>",
+      "numStudies": "1",
+      "numFiles": "5",
+      "mappedFacilityId": ""
+    }
+  ],
+  "fileValidationSettings": {
+    "localizerValidationConfigured": false
+  },
+  "uiLabels": {
+    "siteSettingsTab": "Site Settings",
+    "receiverSettingsTab": "Receiver Settings",
+    "scannerMappingTab": "Scanner Mapping",
+    "fileValidationSettingsTab": "File Validation Settings",
+    "unmappedScannersTab": "Unmapped Scanners",
+    "activityMonitorMenu": "Activity Monitor",
+    "settingsMenu": "Settings"
+  }
+}
