@@ -1,0 +1,111 @@
+{
+  "testCaseId": "DIRL-T745",
+  "testCaseName": "As a Facility Admin/Registry Admin/Facility User/Service User, verify end to end workflow for DIRL submission.",
+  "businessData": {},
+  "facility": {
+    "corporateId": "",
+    "corporateName": "",
+    "facilityList": [],
+    "activatedFacilityId": "",
+    "activatedFacilityName": ""
+  },
+  "scanner": {
+    "unmappedScanners": [],
+    "mappedScanners": []
+  },
+  "study": {
+    "studyInstanceUid": "",
+    "studyDescription": "",
+    "dateTime": "",
+    "status": "",
+    "facilityMappingStatus": "",
+    "anonymizationStatus": "",
+    "dataUploadStatus": ""
+  },
+  "uiText": {
+    "siteSettingsTabs": [
+      "Site Settings",
+      "Receiver Settings",
+      "Scanner Mapping",
+      "File Validation Settings",
+      "Unmapped Scanners"
+    ],
+    "hamburgerMenu": [
+      "Activity Monitor",
+      "Settings"
+    ],
+    "activityMonitorStatusTiles": [
+      "SUCCESS",
+      "FAILURE",
+      "NOT STARTED"
+    ],
+    "activityMonitorFilters": {
+      "operation": [
+        "All",
+        "Data Validation",
+        "Facility Mapping",
+        "Anonymization",
+        "Upload"
+      ],
+      "status": [
+        "Success",
+        "Failure",
+        "Not Started"
+      ]
+    },
+    "activityMonitorTableColumns": [
+      "StudyInstanceUID",
+      "Study Description",
+      "Date Time",
+      "Data Validation",
+      "Facility Mapping",
+      "Anonymization",
+      "Data Upload",
+      "Action"
+    ],
+    "receiverSettingsStatus": "Running",
+    "receiverDetails": {
+      "name": "Default ACR Connect Listener DIR",
+      "hostnameIp": "0.0.0.0",
+      "aeTitle": "DIR_AE",
+      "port": "104"
+    },
+    "fileValidationSettingsButtons": [
+      "Add",
+      "Delete"
+    ],
+    "fileValidationSettingsWarning": "There are no localizer validation configurations set-up for this DIRLink instance.",
+    "unmappedScannersTableColumns": [
+      "Modality (0008, 0060)",
+      "Station Name (0008, 1010)",
+      "Manufacturer (0008, 0070)",
+      "Model Name (0008, 1090)",
+      "Institution Name (0008, 0080)",
+      "Device Serial No. (0018, 1000)",
+      "Software Version (0018, 1020)",
+      "No. of Studies",
+      "No. of Files",
+      "Action"
+    ],
+    "facilityMappingTooltip": "Facility mapping cannot be found for the scanner identified in this DICOM study. A new scanner profile has been created, please open un-mapped scanners to map the scanner to an NRDR Facility.",
+    "mapScannerPopupFields": [
+      "Facility ID",
+      "Facility Name",
+      "Station Name (0008, 1010)",
+      "Manufacturer (0008, 0070)",
+      "Model Name (0008, 1090)",
+      "Institution Name (0008, 0080)",
+      "Device Serial No. (0018, 1000)",
+      "Software Version (0018, 1020)"
+    ],
+    "mapScannerPopupSuccess": "Scanner-mapping updated successfully. Studies received from this scanner will now be processed automatically.",
+    "activationPopupSuccess": "Activation Completed Successfully!!"
+  },
+  "logs": [
+    {
+      "timestamp": "2024-06-10T12:00:00Z",
+      "level": "INFO",
+      "message": "Test data file DIRL-T745.json generated for DIRL end-to-end workflow test."
+    }
+  ]
+}
