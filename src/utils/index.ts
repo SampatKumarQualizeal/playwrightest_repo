@@ -10,3 +10,6 @@ export { ActionUtils } from './action-utils.js';
 export { CommonUtils } from './common-utils.js';
 export { DateUtils } from './date-utils.js';
 export { DBUtils } from './db-utils.js';
+
+// Optionally export ContactsPage if introduced for consistent imports
+export { ContactsPage } from '../pages/contacts.page.js';

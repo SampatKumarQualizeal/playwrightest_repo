@@ -33,6 +33,28 @@ acr-qmentis-alznet/
 └── tsconfig.json             # TypeScript compiler options
 ```
 
+## New Test Case: CRM Create Contact (TC-N001)
+
+A new test case has been planned and added for the CRM module:
+
+- **Test Case ID:** TC-N001
+- **Name:** Create a new contact
+- **Objective:** Verify the system accepts valid inputs and displays the appropriate message when creating a new contact.
+- **File Structure Impact:**
+  - **Test Spec:** `tests/specs/crm/CreateContact_TC-N001.spec.ts` (new test file)
+  - **Test Data:** `test-data/TC-N001.json` (new test data file)
+  - **Page Objects:** May include updates or additions under `src/pages/` as needed for CRM contact creation flows.
+
+### How to Run the New Test
+
+To execute the new CRM Create Contact test case, use the following command:
+
+```bash
+npx playwright test tests/specs/crm/CreateContact_TC-N001.spec.ts
+```
+
+Ensure that any required test data (e.g., `test-data/TC-N001.json`) is present and that your environment is configured appropriately.
+
 ## Getting Started
 
 Follow these instructions to set up the project on your local machine.

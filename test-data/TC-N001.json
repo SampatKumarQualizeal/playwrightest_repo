@@ -1,0 +1,8 @@
+{
+  "firstName": "Michael",
+  "lastName": "Anderson",
+  "phone": "415-555-0198",
+  "company": "Anderson Consulting LLC",
+  "email": "michael.anderson@example.com",
+  "expectedMessage": "Contact saved successfully"
+}
