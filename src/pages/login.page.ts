@@ -25,6 +25,22 @@ export class LoginPage extends BasePage {
   private readonly registerButton: Locator;
   private readonly verificationEmailSentMessage: Locator;
 
+  // Step 1: Locators for username and password fields with multiple strategies
+  private readonly crmUsernameField: Locator; // PRIMARY: CSS selector
+  // SECONDARY LOCATORS (fallback)
+  // this.page.locator('xpath=//input[@name="email" and @type="text" and @placeholder="Email"]')
+  // this.page.locator('input[name="email"][placeholder="Email"]')
+
+  private readonly crmPasswordField: Locator; // PRIMARY: CSS selector
+  // SECONDARY LOCATORS (fallback)
+  // this.page.locator('xpath=//input[@name="password" and @type="password" and @placeholder="Password"]')
+  // this.page.locator('input[name="password"][type="password"][placeholder="Password"]')
+
+  private readonly crmLoginButton: Locator; // PRIMARY: role/button
+  // SECONDARY LOCATORS (fallback)
+  // this.page.getByRole('button', { name: /Login/i })
+  // this.page.locator('button[type="submit"]')
+
   constructor(page: Page) {
     super(page);
     this.usernameField = page.locator('input[name="username"]');
@@ -47,6 +63,21 @@ export class LoginPage extends BasePage {
     this.secondaryEmailField = page.getByRole('textbox', { name: 'Secondary email *' });
     this.registerButton = page.getByRole('button', { name: 'Register' });
     this.verificationEmailSentMessage = page.locator('#okta-sign-in');
+
+    // Step 1: CRM login page locators
+    this.crmUsernameField = page.locator('input[name="email"]'); // PRIMARY
+    // SECONDARY LOCATORS (fallback)
+    // page.locator('xpath=//input[@name="email" and @type="text" and @placeholder="Email"]')
+    // page.locator('input[name="email"][placeholder="Email"]')
+
+    this.crmPasswordField = page.locator('input[name="password"]'); // PRIMARY
+    // SECONDARY LOCATORS (fallback)
+    // page.locator('xpath=//input[@name="password" and @type="password" and @placeholder="Password"]')
+    // page.locator('input[name="password"][type="password"][placeholder="Password"]')
+
+    this.crmLoginButton = page.getByRole('button', { name: /Login|Sign In|Log In/i }); // PRIMARY
+    // SECONDARY LOCATORS (fallback)
+    // page.locator('button[type="submit"]')
   }
 
   async goto(url: string): Promise<void> {
@@ -107,5 +138,62 @@ export class LoginPage extends BasePage {
     await test.step('Verify Verification Email Sent Message', async () => {
       await expect(this.verificationEmailSentMessage).toContainText('A verification email has been sent!To finish signing in, check your email.Back to sign in');
     });
+  }
+
+  // Step 1: Enter valid data for userName and Password to do login.
+  /**
+   * Logs in to the CRM system using provided credentials and navigates to the new contact creation screen.
+   * Uses multiple locator strategies for username and password fields.
+   * Navigates to /contacts/new after successful login.
+   * Includes structured logging and error handling.
+   * @param userName - CRM username
+   * @param password - CRM password
+   */
+  async loginToCrmAndGoToNewContact(userName: string, password: string): Promise<void> {
+    // Step 1: Enter valid data for userName and Password to do login.
+    const logger = console;
+    try {
+      logger.info('[Step 1] Attempting CRM login', { step: 1 });
+      await test.step('Step 1: Enter valid data for userName and Password to do login', async () => {
+        // Wait for username field (primary locator)
+        await this.crmUsernameField.waitFor({ state: 'visible', timeout: 15000 });
+        logger.info('CRM username field is visible (primary locator)');
+        await this.crmUsernameField.fill(userName);
+        logger.info('Filled CRM username field');
+
+        // Wait for password field (primary locator)
+        await this.crmPasswordField.waitFor({ state: 'visible', timeout: 15000 });
+        logger.info('CRM password field is visible (primary locator)');
+        await this.crmPasswordField.fill(password);
+        logger.info('Filled CRM password field');
+
+        // Click the login button
+        await this.crmLoginButton.waitFor({ state: 'visible', timeout: 10000 });
+        logger.info('CRM login button is visible');
+        await this.crmLoginButton.click();
+        logger.info('Clicked CRM login button');
+
+        // Wait for navigation/network to complete
+        await this.page.waitForLoadState('networkidle');
+        logger.info('CRM login networkidle state reached');
+
+        // Navigate to /contacts/new
+        logger.info('Navigating to /contacts/new');
+        await this.page.goto('/contacts/new', { waitUntil: 'networkidle' });
+        logger.info('Navigation to /contacts/new complete');
+
+        // Wait for a key element on the new contact page to be visible (e.g., first name field)
+        const firstNameField = this.page.locator('input[name="first_name"]'); // PRIMARY
+        // SECONDARY LOCATORS (fallback)
+        // this.page.locator('xpath=//input[@name="first_name" and @type="text"]')
+        // this.page.locator('input[name="first_name"]')
+        await firstNameField.waitFor({ state: 'visible', timeout: 15000 });
+        logger.info('First name field on new contact page is visible');
+      });
+      logger.info('[Step 1] CRM login and navigation to new contact successful', { step: 1 });
+    } catch (error: any) {
+      logger.error('[Step 1] CRM login or navigation failed', { step: 1, message: error.message, stack: error.stack });
+      throw error;
+    }
   }
 }
